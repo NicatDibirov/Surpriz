@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opening Tulip Bouquet</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .bouquet-container {
+            position: relative;
+            width: 200px;
+            height: 300px;
+            /* Start the animation when the page loads */
+            animation: sway 5s infinite alternate ease-in-out; 
+        }
+
+        /* --- Stems and Leaves --- */
+        .stem-and-leaves {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 180px;
+            background-color: #38761d; /* Green */
+            border-radius: 5px 5px 0 0;
+            z-index: 0;
+        }
+
+        .ribbon {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 30px;
+            background-color: #c90076; /* Pink Ribbon */
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* --- Tulips --- */
+        .tulip {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            background-color: #ff99c8; /* Light Pink Tulip Color */
+            border-radius: 50% 50% 0 0;
+            bottom: 150px;
+            transform-origin: 50% 100%; /* Anchor the rotation at the stem */
+            z-index: 2;
+            /* Apply the 'open-tulip' animation */
+            animation: open-tulip 2s forwards, sway-individual 3s infinite alternate ease-in-out;
+        }
+
+        /* Keyframes for the 'opening' effect */
+        @keyframes open-tulip {
+            0% {
+                transform: rotate(0deg) scaleY(1);
+            }
+            50% {
+                transform: rotate(0deg) scaleY(1.1); /* Slight bloom upwards */
+            }
+            100% {
+                /* Simulate 'opening' by rotating and slightly scaling */
+                transform: rotate(10deg) scaleY(1.1); 
+            }
+        }
+
+        @keyframes sway {
+            0% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
+        }
+
+        @keyframes sway-individual {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-5px); }
+        }
+
+
+        /* Specific positioning and animation for each tulip */
+
+        .tulip-left {
+            left: 30px;
+            /* Stagger the animation start */
+            animation-delay: 0.5s; 
+        }
+        
+        .tulip-left::before { /* Left petal */
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 40px;
+            height: 50px;
+            background: #fc74a2; /* Darker Pink */
+            border-radius: 30% 70% 0 0;
+            transform-origin: bottom right;
+            animation: petal-open-left 2s forwards;
+            animation-delay: 0.8s;
+        }
+
+        .tulip-center {
+            left: 70px;
+            background-color: #ff5c8a; /* Bright Pink */
+            animation-delay: 0s;
+        }
+
+        .tulip-right {
+            left: 110px;
+            animation-delay: 1s;
+        }
+
+        .tulip-right::before { /* Right petal */
+            content: '';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 40px;
+            height: 50px;
+            background: #fc74a2; /* Darker Pink */
+            border-radius: 70% 30% 0 0;
+            transform-origin: bottom left;
+            animation: petal-open-right 2s forwards;
+            animation-delay: 1.3s;
+        }
+
+        /* Keyframes for the petals 'opening' */
+        @keyframes petal-open-left {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-15deg); }
+        }
+
+        @keyframes petal-open-right {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(15deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="bouquet-container">
+        <div class="tulip tulip-left"></div>
+        <div class="tulip tulip-center"></div>
+        <div class="tulip tulip-right"></div>
+        <div class="stem-and-leaves"></div>
+        <div class="ribbon"></div>
+    </div>
+</body>
+</html>
