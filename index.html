@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<title>Tülpan Buketi</title>
+<style>
+body{
+  background:#111;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  margin:0;
+  overflow:hidden;
+  font-family:sans-serif;
+}
+.bouquet{
+  position:relative;
+  width:300px;
+  height:400px;
+}
+.tulip{
+  position:absolute;
+  width:20px;
+  height:80px;
+  background:#ff4b8b;
+  border-radius:50px 50px 0 0;
+  transform-origin:bottom;
+}
+.stem{
+  position:absolute;
+  width:4px;
+  height:140px;
+  background:#0f0;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:0;
+}
+@keyframes sway{
+  0%{transform:rotate(-4deg);}
+  50%{transform:rotate(4deg);}
+  100%{transform:rotate(-4deg);}
+}
+.tulip{
+  animation:sway 3s ease-in-out infinite;
+}
+</style>
+</head>
+<body>
+<div class="bouquet">
+  <div class="stem" style="left:50%;"></div>
+  <div class="tulip" style="left:50%; background:#ff4b8b;"></div>
+
+  <div class="stem" style="left:40%;"></div>
+  <div class="tulip" style="left:40%; background:#ff7fc5;"></div>
+
+  <div class="stem" style="left:60%;"></div>
+  <div class="tulip" style="left:60%; background:#ff2e6f;"></div>
+
+  <div class="stem" style="left:30%;"></div>
+  <div class="tulip" style="left:30%; background:#ff5f99;"></div>
+
+  <div class="stem" style="left:70%;"></div>
+  <div class="tulip" style="left:70%; background:#ff99c9;"></div>
+</div>
+</body>
+</html>
